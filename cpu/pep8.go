@@ -949,6 +949,14 @@ func (cpu *Pep8CPU) getOpAddr() {
 	case sxf:
 		cpu.Operand = cpu.read16(cpu.SP+cpu.Spec) + cpu.X
 	}
+
+	// Align 8 bits for all the byte-oriented ops
+	switch cpu.opcode {
+	case CHAROi, CHAROd, CHAROn, CHAROs, CHAROsf, CHAROx, CHAROsx, CHAROsxf,
+		LDBYTEAi, LDBYTEAd, LDBYTEAn, LDBYTEAs, LDBYTEAsf, LDBYTEAx, LDBYTEAsx, LDBYTEAsxf,
+		LDBYTEXi, LDBYTEXd, LDBYTEXn, LDBYTEXs, LDBYTEXsf, LDBYTEXx, LDBYTEXsx, LDBYTEXsxf:
+		cpu.Operand = cpu.Operand >> 8
+	}
 }
 
 func (cpu *Pep8CPU) read16(addr uint16) uint16 {
@@ -1369,7 +1377,7 @@ func (cpu *Pep8CPU) chari() {
 }
 
 func (cpu *Pep8CPU) charo() {
-	chr := cpu.Operand >> 8
+	chr := cpu.Operand & 0xFF
 	fmt.Fprintf(cpu.Out, "%c", chr)
 }
 
@@ -1521,9 +1529,9 @@ func (cpu *Pep8CPU) ld() {
 func (cpu *Pep8CPU) ldbyte() {
 	switch cpu.opcode.register() {
 	case A:
-		cpu.A = (cpu.Operand & 0xFF00) >> 8
+		cpu.A = cpu.Operand & 0xFF
 	case X:
-		cpu.X = (cpu.Operand & 0xFF00) >> 8
+		cpu.X = cpu.Operand & 0xFF
 	}
 }
 
