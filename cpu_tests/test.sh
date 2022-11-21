@@ -6,6 +6,8 @@ normal="$(tput sgr0)"
 
 run_single()
 {
+	local inputpepo outdir testdir testout failed
+
 	inputpepo="$1"
 	outdir="$2"
 	testdir="$3"
@@ -37,7 +39,7 @@ run_single()
 		failed="1"
 	fi
 
-	diff -u "$outdir/output" "$testdir/expected_output" >"$outdir/diffout"
+	diff -au "$testdir/expected_output" "$outdir/output" >"$outdir/diffout"
 
 	if [ "$?" -ne 0 ]; then
 		echo "output mismatch" >&2
@@ -45,7 +47,7 @@ run_single()
 		failed="1"
 	fi
 
-	diff -u "$outdir/trace" "$testdir/expected_trace" >"$outdir/difftrace"
+	diff -au "$testdir/expected_trace" "$outdir/trace" >"$outdir/difftrace"
 
 	if [ "$?" -ne 0 ]; then
 		echo "trace mismatch" >&2
@@ -62,6 +64,8 @@ run_single()
 
 run_multi()
 (
+	local pepo_path testdir
+
 	pepo_path="$(realpath "$1")"
 	testdir="$2"
 
@@ -72,6 +76,8 @@ run_multi()
 
 run_tests()
 (
+	local testdir pepos
+
 	cd "$1"
 
 	testdir="$(mktemp -d)"
@@ -87,6 +93,8 @@ run_tests()
 	else
 		run_single "$pepos" "$testdir" "."
 	fi
+
+	rm -rf "$testdir"
 )
 
 (
@@ -96,6 +104,13 @@ run_tests()
 
 qdpep8="$(realpath "../bin/qdpep8_cli")"
 
-for i in tests/*; do
-	run_tests "$i"
+tests="$(ls tests)"
+
+if [ "$#" -eq 1 ]; then
+	filter_tests="$1"
+	tests="$(echo "$tests" | grep "$1")"
+fi
+
+for i in $tests; do
+	run_tests tests/"$i"
 done
