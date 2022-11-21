@@ -935,6 +935,14 @@ func (cpu *Pep8CPU) getOpRd() {
 	case sxf:
 		cpu.Operand = cpu.read16(cpu.read16(cpu.SP+cpu.Spec) + cpu.X)
 	}
+
+	// Align 8 bits for all the byte-oriented ops
+	switch cpu.opcode {
+	case CHAROd, CHAROn, CHAROs, CHAROsf, CHAROx, CHAROsx, CHAROsxf,
+		LDBYTEAd, LDBYTEAn, LDBYTEAs, LDBYTEAsf, LDBYTEAx, LDBYTEAsx, LDBYTEAsxf,
+		LDBYTEXd, LDBYTEXn, LDBYTEXs, LDBYTEXsf, LDBYTEXx, LDBYTEXsx, LDBYTEXsxf:
+		cpu.Operand = cpu.Operand >> 8
+	}
 }
 
 func (cpu *Pep8CPU) getOpAddr() {
@@ -956,14 +964,6 @@ func (cpu *Pep8CPU) getOpAddr() {
 		cpu.Operand = cpu.read16(cpu.SP + cpu.Spec)
 	case sxf:
 		cpu.Operand = cpu.read16(cpu.SP+cpu.Spec) + cpu.X
-	}
-
-	// Align 8 bits for all the byte-oriented ops
-	switch cpu.opcode {
-	case CHAROi, CHAROd, CHAROn, CHAROs, CHAROsf, CHAROx, CHAROsx, CHAROsxf,
-		LDBYTEAi, LDBYTEAd, LDBYTEAn, LDBYTEAs, LDBYTEAsf, LDBYTEAx, LDBYTEAsx, LDBYTEAsxf,
-		LDBYTEXi, LDBYTEXd, LDBYTEXn, LDBYTEXs, LDBYTEXsf, LDBYTEXx, LDBYTEXsx, LDBYTEXsxf:
-		cpu.Operand = cpu.Operand >> 8
 	}
 }
 
