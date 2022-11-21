@@ -1,2 +1,2 @@
-PC = 0003; SP = ffff; A 0000; X = 0000; Spec = 0000; N = 0, Z = 0, V = 0, C = 0; opcode = c8; LDX,i 
+PC = 0003; SP = ffff; A 0000; X = 0000; Spec = 0000; N = 0, Z = 1, V = 0, C = 0; opcode = c8; LDX,i 
 no more chars to consume
