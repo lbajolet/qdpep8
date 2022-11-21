@@ -620,12 +620,20 @@ func deci(in io.Reader) int {
 		os.Exit(1)
 	}
 
-	if c != '-' && (c < '0' || c > '9') {
+	neg := false
+	if c == '-' {
+		neg = true
+		c, err = chari(in)
+		if err != nil {
+			fmt.Print("Invalid DECI input\n")
+			os.Exit(1)
+		}
+	}
+
+	if c < '0' || c > '9' {
 		fmt.Print("Invalid DECI input\n")
 		os.Exit(1)
 	}
-
-	neg := c == '-'
 
 	val := 0
 	for c >= '0' && c <= '9' {
