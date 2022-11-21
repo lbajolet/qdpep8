@@ -1185,12 +1185,13 @@ func (cpu *Pep8CPU) not() {
 
 	val = val ^ uint16(0xFFFF)
 
-	cpu.Z = false
 	cpu.N = false
+	cpu.Z = false
 
 	if val < 0 {
 		cpu.N = true
-	} else if val == 0 {
+	}
+	if val == 0 {
 		cpu.Z = true
 	}
 
@@ -1211,12 +1212,15 @@ func (cpu *Pep8CPU) neg() {
 
 	val = (val ^ uint16(0xFFFF)) + 1
 
-	cpu.Z = false
 	cpu.N = false
+	cpu.Z = false
+	cpu.V = false
 
 	if val < 0 {
 		cpu.N = true
-	} else if val == 0 {
+	}
+
+	if val == 0 {
 		cpu.Z = true
 	}
 
@@ -1242,12 +1246,25 @@ func (cpu *Pep8CPU) asl() {
 	cf := val & 0x8000
 	val = val << 1
 
+	cpu.N = false
+	cpu.Z = false
+	cpu.V = false
+	cpu.C = false
+
 	if cf != 0 {
 		cpu.C = true
 	}
 
 	if val&0x8000 != cf {
 		cpu.V = true
+	}
+
+	if val == 0 {
+		cpu.Z = true
+	}
+
+	if val < 0 {
+		cpu.N = true
 	}
 
 	switch reg {
@@ -1269,8 +1286,20 @@ func (cpu *Pep8CPU) asr() {
 	cf := val & 1
 	val = val >> 1
 
+	cpu.N = false
+	cpu.Z = false
+	cpu.C = false
+
 	if cf != 0 {
 		cpu.C = true
+	}
+
+	if val == 0 {
+		cpu.Z = true
+	}
+
+	if val < 0 {
+		cpu.N = true
 	}
 
 	val = sf | val
@@ -1345,6 +1374,11 @@ func (cpu *Pep8CPU) nop() {}
 
 func (cpu *Pep8CPU) deci() {
 	val := deci(cpu.In)
+
+	cpu.N = false
+	cpu.Z = false
+	cpu.V = false
+
 	if val > 32767 {
 		cpu.V = true
 	}
@@ -1532,6 +1566,15 @@ func (cpu *Pep8CPU) ld() {
 	case X:
 		cpu.X = cpu.Operand
 	}
+
+	cpu.Z = false
+	cpu.N = false
+	if cpu.Operand == 0 {
+		cpu.Z = true
+	}
+	if cpu.Operand >= 0x8000 {
+		cpu.N = true
+	}
 }
 
 func (cpu *Pep8CPU) ldbyte() {
@@ -1540,6 +1583,15 @@ func (cpu *Pep8CPU) ldbyte() {
 		cpu.A = cpu.Operand & 0xFF
 	case X:
 		cpu.X = cpu.Operand & 0xFF
+	}
+
+	cpu.Z = false
+	cpu.N = false
+	if cpu.Operand == 0 {
+		cpu.Z = true
+	}
+	if cpu.Operand >= 0x8000 {
+		cpu.N = true
 	}
 }
 
