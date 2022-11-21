@@ -1,0 +1,5 @@
+PC = 0003; SP = ffff; A 0000; X = 0000; Spec = 0041; N = 0, Z = 0, V = 0, C = 0; opcode = 41; STRO,d 
+PC = 0006; SP = ffff; A 0000; X = 0000; Spec = 003b; N = 0, Z = 0, V = 0, C = 0; opcode = 31; DECI,d 
+PC = 0009; SP = ffff; A 0033; X = 0000; Spec = 003b; N = 0, Z = 0, V = 0, C = 0; opcode = c1; LDA,d 
+PC = 000c; SP = ffff; A 0033; X = 0000; Spec = 0055; N = 0, Z = 0, V = 0, C = 0; opcode = 41; STRO,d 
+Invalid DECI input
