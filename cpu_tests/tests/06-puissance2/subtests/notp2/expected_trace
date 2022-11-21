@@ -1,0 +1,9 @@
+PC = 0003; SP = ffff; A 0000; X = 0000; Spec = 0021; N = 0, Z = 0, V = 0, C = 0; opcode = 31; DECI,d 
+PC = 0006; SP = ffff; A 000c; X = 0000; Spec = 0021; N = 0, Z = 0, V = 0, C = 0; opcode = c1; LDA,d 
+PC = 0009; SP = ffff; A 000c; X = 0000; Spec = 001d; N = 0, Z = 0, V = 0, C = 0; opcode = 0a; BREQ,i 
+PC = 0010; SP = ffff; A 000c; X = 0000; Spec = 0010; N = 0, Z = 0, V = 0, C = 0; opcode = 0e; BRGE,i 
+PC = 0013; SP = ffff; A 000b; X = 0000; Spec = 0001; N = 0, Z = 0, V = 0, C = 1; opcode = 80; SUBA,i 
+PC = 0016; SP = ffff; A 0008; X = 0000; Spec = 0021; N = 0, Z = 0, V = 0, C = 1; opcode = 91; ANDA,d 
+PC = 001d; SP = ffff; A 0008; X = 0000; Spec = 001d; N = 0, Z = 0, V = 0, C = 1; opcode = 0c; BRNE,i 
+PC = 0020; SP = ffff; A 0008; X = 0000; Spec = 0023; N = 0, Z = 0, V = 0, C = 1; opcode = 41; STRO,d 
+PC = 0021; SP = ffff; A 0008; X = 0000; Spec = 0000; N = 0, Z = 0, V = 0, C = 1; opcode = 00; STOP 
