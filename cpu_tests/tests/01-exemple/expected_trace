@@ -1,0 +1,4 @@
+PC = 0003; SP = ffff; A 0003; X = 0000; Spec = 000a; N = 0, Z = 0, V = 0, C = 0; opcode = c1; LDA,d 
+PC = 0006; SP = ffff; A 0008; X = 0000; Spec = 000c; N = 0, Z = 0, V = 0, C = 0; opcode = 71; ADDA,d 
+PC = 0009; SP = ffff; A 0008; X = 0000; Spec = 000e; N = 0, Z = 0, V = 0, C = 0; opcode = e1; STA,d 
+PC = 000a; SP = ffff; A 0008; X = 0000; Spec = 0000; N = 0, Z = 0, V = 0, C = 0; opcode = 00; STOP 
