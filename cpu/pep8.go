@@ -1613,5 +1613,5 @@ func (cpu *Pep8CPU) stbyte() {
 	if cpu.opcode.register() == X {
 		val = cpu.X
 	}
-	cpu.write8(uint8(val>>8), cpu.Operand)
+	cpu.write8(uint8(val&0xFF), cpu.Operand)
 }
