@@ -614,10 +614,15 @@ func chari(in io.Reader) (byte, error) {
 }
 
 func deci(in io.Reader) int {
-	c, err := chari(in)
-	if err != nil {
-		fmt.Print("Invalid DECI input\n")
-		os.Exit(1)
+	var c byte = 0
+	var err error
+
+	for c <= ' ' {
+		c, err = chari(in)
+		if err != nil {
+			fmt.Print("Invalid DECI input\n")
+			os.Exit(1)
+		}
 	}
 
 	neg := false
