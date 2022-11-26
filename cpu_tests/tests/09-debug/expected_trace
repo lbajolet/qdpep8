@@ -1,0 +1,13 @@
+PC = 0003; SP = ffff; A 0009; X = 0000; Spec = 0009; N = 0, Z = 0, V = 0, C = 0; opcode = c0; LDA,i 
+PC = 000d; SP = fffd; A 0009; X = 0000; Spec = 000d; N = 0, Z = 0, V = 0, C = 0; opcode = 16; CALL,i 
+PC = 0010; SP = fffd; A 0009; X = 0019; Spec = 0017; N = 0, Z = 0, V = 0, C = 0; opcode = c9; LDX,d 
+PC = 0013; SP = fffd; A 0022; X = 0019; Spec = 0017; N = 0, Z = 0, V = 0, C = 0; opcode = 71; ADDA,d 
+PC = 0016; SP = fffd; A 0022; X = 0019; Spec = 0017; N = 0, Z = 0, V = 0, C = 0; opcode = e1; STA,d 
+PC = 0006; SP = ffff; A 0022; X = 0019; Spec = 0000; N = 0, Z = 0, V = 0, C = 0; opcode = 58; RET 
+PC = 0009; SP = ffff; A 0009; X = 0019; Spec = 0009; N = 0, Z = 0, V = 0, C = 0; opcode = c0; LDA,i 
+PC = 000d; SP = fffd; A 0009; X = 0019; Spec = 000d; N = 0, Z = 0, V = 0, C = 0; opcode = 16; CALL,i 
+PC = 0010; SP = fffd; A 0009; X = 0022; Spec = 0017; N = 0, Z = 0, V = 0, C = 0; opcode = c9; LDX,d 
+PC = 0013; SP = fffd; A 002b; X = 0022; Spec = 0017; N = 0, Z = 0, V = 0, C = 0; opcode = 71; ADDA,d 
+PC = 0016; SP = fffd; A 002b; X = 0022; Spec = 0017; N = 0, Z = 0, V = 0, C = 0; opcode = e1; STA,d 
+PC = 000c; SP = ffff; A 002b; X = 0022; Spec = 0000; N = 0, Z = 0, V = 0, C = 0; opcode = 58; RET 
+PC = 000d; SP = ffff; A 002b; X = 0022; Spec = 0000; N = 0, Z = 0, V = 0, C = 0; opcode = 00; STOP 
