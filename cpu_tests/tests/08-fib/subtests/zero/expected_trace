@@ -1,0 +1,10 @@
+PC = 0003; SP = ffff; A 0000; X = 0000; Spec = 0010; N = 0, Z = 1, V = 0, C = 0; opcode = 31; DECI,d 
+PC = 0006; SP = ffff; A 0000; X = 0000; Spec = 0010; N = 0, Z = 1, V = 0, C = 0; opcode = c1; LDA,d 
+PC = 0012; SP = fffd; A 0000; X = 0000; Spec = 0012; N = 0, Z = 1, V = 0, C = 0; opcode = 16; CALL,i 
+PC = 0015; SP = fff9; A 0000; X = 0000; Spec = 0004; N = 1, Z = 0, V = 0, C = 1; opcode = 68; SUBSP,i 
+PC = 0018; SP = fff9; A 0000; X = 0000; Spec = 0001; N = 1, Z = 0, V = 0, C = 0; opcode = b0; CPA,i 
+PC = 0033; SP = fff9; A 0000; X = 0000; Spec = 0033; N = 1, Z = 0, V = 0, C = 0; opcode = 06; BRLE,i 
+PC = 0009; SP = ffff; A 0000; X = 0000; Spec = 0000; N = 1, Z = 0, V = 0, C = 0; opcode = 5c; RET 
+PC = 000c; SP = ffff; A 0000; X = 0000; Spec = 0010; N = 1, Z = 0, V = 0, C = 0; opcode = e1; STA,d 
+PC = 000f; SP = ffff; A 0000; X = 0000; Spec = 0010; N = 1, Z = 0, V = 0, C = 0; opcode = 39; DECO,d 
+PC = 0010; SP = ffff; A 0000; X = 0000; Spec = 0000; N = 1, Z = 0, V = 0, C = 0; opcode = 00; STOP 
