@@ -1430,9 +1430,9 @@ func (cpu *Pep8CPU) charo() {
 
 func (cpu *Pep8CPU) ret() {
 	loc := cpu.opcode & 0x7
-	cpu.SP -= uint16(loc)
+	cpu.SP, _, _, _, _ = doadd(cpu.SP, uint16(loc))
 	retaddr := cpu.read16(cpu.SP)
-	cpu.SP -= 2
+	cpu.SP += 2
 	cpu.PC = retaddr
 }
 
